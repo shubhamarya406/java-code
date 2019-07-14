@@ -1,0 +1,265 @@
+package practice_oops;
+
+import java.awt.DisplayMode;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class BST {
+	public class node {
+		node left;
+		node right;
+		int data;
+	}
+
+	private node root;
+
+	public void construct(int in[]) {
+		this.root = construct(null, in, 0, in.length - 1);
+	}
+
+	private node construct(node parent, int in[], int lo, int hi) {
+		if (lo > hi) {
+			return null;
+		}
+		int mid = (lo + hi) / 2;
+		node nn = new node();
+		nn.data = in[mid];
+
+		nn.left = construct(nn, in, lo, mid - 1);
+		nn.right = construct(parent, in, mid + 1, hi);
+		return nn;
+	}
+
+	public void dispaly() {
+		display(this.root);
+	}
+
+	private void display(node Node) {
+		if (Node == null) {
+			return;
+		}
+		String str = "";
+		if (Node.left != null) {
+			str += Node.left.data;
+		} else {
+			str += ".";
+		}
+		str += "==>" + Node.data + "==>";
+		if (Node.right != null) {
+			str += Node.right.data;
+		} else {
+			str += ".";
+		}
+		System.out.println(str);
+		display(Node.left);
+		display(Node.right);
+		return;
+	}
+
+	public int size() {
+		return size(this.root);
+	}
+
+	private int size(node root) {
+		if(root==null)
+		{
+			return 0;
+		}
+		int size = 0;
+		size += size(root.left);
+		size += size(root.right);
+		return size + 1;
+
+	}
+	public int max()
+	{
+		return max(this.root);
+	}
+	private int max(node Node)
+	{
+		if(Node.right==null)
+	{
+		return Node.data;
+	}
+		int max;
+		//int max=Node.data;
+		max=max(Node.right);
+		return max;
+	}
+	public boolean find(int item)
+	{
+		return find(this.root,item);
+	}
+
+	private boolean  find(node Node, int item) {
+		if(Node==null)
+		{
+			return false;
+		}
+		boolean bn=false;
+		if(item==Node.data)
+		{
+			return true;
+		}
+		if(item>Node.data)
+		{
+			bn=find(Node.right,item);
+		}
+		if(item<Node.data)
+		{
+			bn=find(Node.left,item);
+		}
+		return bn;
+	}
+	public int  ht()
+	{
+		return ht(this.root);
+	}
+
+	private int ht(node Node) {
+		if(Node==null)
+		{
+			return -1;
+		}
+		int lht=ht(Node.left);
+		int rht=ht(Node.right);
+		int sp=Math.max(lht, rht)+1;
+		return sp;
+		//return 0;
+	}
+	public void printinrange(int lo,int hi)
+	{
+		printinrange(this.root,lo, hi);
+	}
+
+	private void printinrange(node Node, int lo, int hi) {
+		
+		if(Node==null)
+		{
+			return;
+		}
+			if(Node.data<lo)
+		{
+			printinrange(Node.right, lo,hi);
+		}
+		if(Node.data>hi)
+		{
+			printinrange(Node.left,lo, hi);
+		}
+		else
+		{
+			String str="";
+			if(Node.left!=null)
+			str+=Node.left.data;
+			else
+				str+=".";
+			
+			str+="==>"+Node.data+"==>";
+			if(Node.right!=null)
+			str+=Node.right.data;
+			else
+				str+=".";
+			System.out.println(str);
+			printinrange(Node.left,lo, hi);
+			printinrange(Node.right,lo, hi);
+		}
+	}
+	public void dec()
+	{
+		dec(this.root);
+	}
+
+	private void dec(node Node) {
+		if(Node==null)
+		{
+			return;
+		}
+		dec(Node.right);
+		System.out.println(Node.data);
+	
+		dec(Node.left);
+	}
+	public void add(int item)
+	{
+		add(this.root,item);
+	}
+
+	private void add(node Node, int item) {
+		
+		if(Node==null)
+		{
+			return ;
+		}
+		if(item>Node.data)
+		{
+			if(Node.right==null)
+			{
+				node nn=new node();
+				nn.data=item;
+				Node.right=nn;
+			}
+			else
+			add(Node.right,item);
+		}
+		else if(item<=Node.data)
+		{
+
+			if(Node.left==null)
+			{
+				node nn=new node();
+				nn.data=item;
+				Node.left=nn;
+			}
+			else
+				
+			add(Node.left, item);
+		}
+		
+	}
+	public void lca(int first,int second)
+	{
+		
+		lca(this.root,first,second);
+	}
+	private node lca(node Node, int first, int second) {
+	if(Node==null)
+	{
+		return null;
+	}
+		if(Node.data==first||Node.data==second)
+	{
+		return Node;
+	}
+		if(first>Node.data&&second>Node.data)
+		{
+			lca(Node.right, first, second);
+		}
+		if(first<Node.data&&second<Node.data)
+		{
+			lca(Node.left, first, second);
+			
+		}
+		else
+		{
+		lca(Node.left,first,second);
+		lca(Node.right,first,second);
+		
+		}
+			
+		
+	}
+	static Scanner scn=new Scanner(System.in);
+		public static void main(String[]args)
+		{int n=scn.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i]=scn.nextInt();
+		}
+		Arrays.sort(arr);
+			BST bst=new BST();
+			bst.construct(arr);
+			bst.dispaly();
+			
+		}
+}

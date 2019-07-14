@@ -1,0 +1,33 @@
+package pattern;
+
+import java.util.Scanner;
+
+public class numbersystem {
+public static void main(String[] args) {
+	Scanner scn=new Scanner(System.in);
+	int n =scn.nextInt();
+	decimaltobinary(n);
+	
+}
+public static void  decimaltobinary(int n)
+{int ans=0;
+int i=0;
+int  multip=0;
+	while(n!=0)
+	{   int rem=n%2;
+		n=n/2;
+		ans=ans+(int)(rem*Math.pow(10, i));
+		
+		i++;
+	}
+		
+		System.out.println(ans);
+		
+		
+		
+		
+	}
+	
+	
+}
+

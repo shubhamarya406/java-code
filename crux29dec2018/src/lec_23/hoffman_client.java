@@ -1,0 +1,13 @@
+package lec_23;
+
+public class hoffman_client {
+
+	public static void main(String[] args) {
+		String str="aaaabcddddd";
+		hoffman hf=new hoffman(str);
+		System.out.println(hf.encoder("abcdddd"));
+		System.out.println(hf.decoder("111110100000"));
+
+	}
+
+}

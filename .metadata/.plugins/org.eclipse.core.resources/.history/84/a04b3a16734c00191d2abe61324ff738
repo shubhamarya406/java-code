@@ -1,0 +1,92 @@
+package practice_oops.inheritance;
+
+import java.util.Scanner;
+
+public class binarytree {
+	Scanner scn = new Scanner(System.in);
+
+	private class node {
+		node left;
+		node right;
+		int data;
+	}
+
+	private node root;
+
+	public binarytree()
+	{
+		this.root=binarytree(null,false);
+	}
+
+	private node binarytree(node parent, boolean ilc) {
+
+		if (parent == null)
+
+		{
+			System.out.println("enter the data for root node");
+		}
+		else
+		{
+			if(ilc)
+			{
+				System.out.println("Enter the data for left child of "+parent .data);
+			}
+			else
+			{
+				System.out.println("Enter the data for right child of"+parent.data);
+			}
+		}
+		int item=scn.nextInt();
+	   node nn=new node();
+	   nn.data=item;
+	   System.out.println("is left child of"+nn.data);
+	   boolean lc=scn.nextBoolean();
+	   if(lc)
+	   {
+		 nn.left=binarytree(nn, lc);
+	   }
+	   System.out.println("is right child of"+nn.data);
+	   boolean rc=scn.nextBoolean();
+	   if(rc)
+	   {
+		   nn.right=binarytree(nn, rc);
+	   }
+		   
+		return nn;
+	}
+	public void display()
+	
+	{
+		display(this.root);
+	}
+
+	private void display(node Node) {
+		if(Node==null)
+		{
+			return ;
+		}
+		String str=" ";
+		if(Node.left==null)
+		{
+			str+=".";
+		}
+		else
+		{
+			str+=Node.left.data;
+		}
+		str=str+"-->"+Node.data+"-->";
+		if(Node.right==null)
+		{
+			str+=".";
+		}
+		else
+		{
+			str+=" "+Node.right.data;
+		}
+		System.out.println(str);
+		display(Node.left);
+		display(Node.right);
+		
+		
+	}
+}

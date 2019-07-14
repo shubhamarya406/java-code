@@ -1,0 +1,52 @@
+package Assignment_hackerblocks;
+
+import java.util.Scanner;
+
+public class recursion_isbalanced {
+
+	public static void main(String[] args) {
+		
+Scanner scn=new Scanner(System.in);
+String str=scn.nextLine();
+int i=0,j=str.length()-1;
+int larr[]=new int[str.length()];
+isbalanced(str,larr,i,j,0);
+
+	}
+public static void isbalanced(String str,int larr[],int i,int j,int flag)
+{   if(str.length()==0)
+{
+	
+	return;
+}
+	
+	char ch=str.charAt(0);
+	String ss=str.substring(1);
+	if(ch=='{'||ch=='['||ch=='('||ch=='}'||ch==']'||ch==')')
+	{
+		larr[i]=ch;
+	}
+	isbalanced(ss,larr,i+1,j,flag);
+	char ch1=str.charAt(str.length()/2);
+	String ss1=str.substring(str.length()/2+1);
+	 j=larr.length-1;
+	 flag=0;
+	for( i=0;i<larr.length/2;)
+	{   
+		if(larr[i]=='{'&&larr[j-i]=='}'||larr[i]=='['&&larr[j-i]==']'||larr[i]=='('&&larr[j-i]==')')
+		{
+			
+			i++;
+		}
+		else
+		{
+			flag=1;
+			break;
+		}
+	}
+	if(flag==0)
+		System.out.println("True");
+	else
+		System.out.println("False");
+}
+}

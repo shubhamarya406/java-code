@@ -1,0 +1,46 @@
+package Assignment_hackerblocks;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class strongest_fighter {
+
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		int n = scn.nextInt();
+		int arr[] = new int[n];
+		for (int i = 0; i < arr.length; i++) {
+
+			arr[i] = scn.nextInt();
+		}
+		int k = scn.nextInt();
+		Stack<Integer> stack = new Stack<>();
+		int i = 0;
+		while (i < arr.length) {
+
+			stack.push(i);
+
+			int j = i;
+			while (j < k + i) {
+				if (j > arr.length) {
+					break;
+				}
+				if (arr[j] > arr[stack.peek()]) {
+
+					stack.pop();
+					stack.push(j);
+
+				}
+				j++;
+			}
+			
+			i++;
+
+		}
+		while (!stack.isEmpty()) {
+			int val = stack.pop();
+			System.out.println(arr[val]);
+		}
+	}
+
+}

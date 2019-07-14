@@ -1,0 +1,47 @@
+package Assignment_hackerblocks;
+
+public class subset {
+
+	public static void main(String[] args) {
+		
+
+		
+				int[] arr = { 1, 2, 3};
+				int sump=3;
+				int ct=0;
+
+				for (int num = 0; num < Math.pow(2, arr.length); num++) {
+
+					int i = 0;
+                    int sum=0;
+                    int crrsum=0;
+					int temp = num;
+					while (temp != 0) {
+                       crrsum=0;
+						int rem = temp % 2;
+						 sum=+arr[i];
+						if (rem == 1) {
+							for( i=0;i<arr.length;i++)
+							{   crrsum+=arr[i];
+								if(crrsum==sump)
+								
+								System.out.println(arr[i]+" ");
+								
+							}
+						}
+							
+							
+						
+
+						i++;
+						temp = temp / 2;
+					}
+
+					System.out.println();
+
+				}
+
+			}
+
+		}
+

@@ -1,0 +1,42 @@
+package Assignment_hackerblocks;
+
+import java.util.Scanner;
+
+import practice_oops.stack;
+import practice_oops.inheritance.dynamic_stack;
+
+public class stock_span extends dynamic_stack {
+
+	public static void main(String[] args) throws Exception {
+		stack st = new stack();
+
+		Scanner scn = new Scanner(System.in);
+		int n = scn.nextInt();
+		int arr[] = new int[n];
+		for (int i = 0; i < n; i++) {
+
+			int item = scn.nextInt();
+			arr[i] = item;
+			st.push(item);
+		}
+		int ans[] = new int[arr.length];
+		stack helper = new stack();
+		int ct = 0;
+		helper.push(arr[0]);
+		for (int i = 0; i < arr.length; i++) {
+			while (!helper.isempty() && arr[helper.peek()]<arr[i]) {
+			 ans[helper.pop()]=arr[i];
+			}
+			helper.push(i);
+		}
+		while(!helper.isempty())
+		{
+			ans[helper.pop()]=-1;
+		}
+		for(int i=0;i<ans.length;i++)
+		{
+			System.out.print(ans[i]+" ");
+		}
+	}
+
+}

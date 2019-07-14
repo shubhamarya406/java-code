@@ -1,0 +1,10 @@
+package L16;
+
+public class generictree_client {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

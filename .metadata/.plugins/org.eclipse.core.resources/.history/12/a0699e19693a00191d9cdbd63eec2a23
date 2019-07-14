@@ -1,0 +1,24 @@
+package Assignment_hackerblocks;
+
+public class subset {
+
+	public static void main(String[] args) {
+ int arr[]= {1,2,3};
+		subset(arr,"", 3,0);
+	}
+public static void subset(int arr[],String ans,int sum,int i)
+{
+	if(i==arr.length) {
+		if(sum==0)
+		{
+			System.out.println(ans);
+		}
+		
+		return ;
+	}
+	
+	subset(arr,"", sum,i+1);
+	subset(arr, ans+arr[i], sum-arr[i],i+1);
+	
+}
+}

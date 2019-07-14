@@ -1,0 +1,18 @@
+package practice_oops.inheritance;
+
+public class binary_trees_client {
+
+	public static void main(String[] args) {
+		//10 true 20 true 40 false false true 50 false false true 30 false true 70 false false
+		binarytree bt=new binarytree();
+		bt.display();
+//		System.out.println(bt.find(110));
+//		System.out.println(bt.max());
+	System.out.println(bt.size());
+		System.out.println(bt.height());
+//		System.out.println(bt.diameter());
+//		System.out.println(bt.diameter2());
+//
+	}
+
+}

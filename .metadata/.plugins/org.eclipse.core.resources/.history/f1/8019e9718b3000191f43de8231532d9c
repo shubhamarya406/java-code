@@ -1,0 +1,94 @@
+package Assignment_hackerblocks;
+
+import java.util.Scanner;
+
+public class N_knight {
+
+	public static void main(String[] args) {
+		Scanner scn=new Scanner(System.in);
+		int n=scn.nextInt();
+		boolean board[][]=new boolean[n][n];
+	int ans=	Nknight(board,0,0,"",n,0,0);
+System.out.println("\n"+ans);
+	}
+
+	public static int  Nknight(boolean[][] board, int row,int kpsf,String ans,int total,int col,int ct) {
+		
+		if(row==board.length)
+		{
+			
+		//	System.out.println();
+			return 1;
+		}
+		
+		if(kpsf==total)
+		{
+			System.out.print(ans+" ");
+			return 1;
+		}
+		if(col==board[0].length)
+		{
+			ct+=Nknight(board, row+1,kpsf,ans, total,0,ct);
+			return 1;
+		}
+		
+		
+			if (isitsafe(board, row, col)) {
+				board[row][col] = true;
+				ct+=Nknight(board, row,kpsf+1,ans+"{"+row+"-"+col+"}", total,col+1,ct);
+				board[row][col] = false;
+			
+		}
+ ct+= Nknight(board,row,kpsf,ans,total,col+1,ct);
+   return ct;
+	}
+	public static boolean isitsafe(boolean[][]board,int row,int col)
+	{  //upper
+		int r=row-2;
+		int c=col+1;
+		if(r>0&&board[r][c]==true)
+			return false;
+	 r=row-1;
+	 c=col+2;
+	 
+	 if((r>=0&&c<board[0].length)&&board[r][c]==true)
+		 return false;
+	 
+	 r=row-2;
+	 c=col-1;
+	 if((r>=0&&c>=0)&&board[r][c]==true)
+		 return false;
+	 
+	 r=row-1;
+	 c=col-2;
+	 if((r>=0&&c>=0)&&board[r][c]==true)
+	 {
+		 return false;
+	 }
+		//lower
+//	 r=row+1;
+//	 c=col-2;
+//	 if((c>=0&&r<board.length)&&board[r][c]==true)
+//	 {
+//		 return false;
+//	 }
+//	 r=row-1;
+//	 c=col+2;
+//	 if((r>=0&&c<board[0].length)&&board[r][c]==true)
+//	 {
+//		 return false;
+//	 }
+//	 r=row+2;
+//	 c=col+1;
+//	 if((r<board.length&&c<board[0].length)&&board[r][c]==true)
+//		 return false;
+//	 r=row+1;
+//	 c=col+2;
+//	 if((r<board.length&&c<board[0].length)&&board[r][c]==true)
+//	 {
+//		 return false;
+//	 }
+//	 
+	 return true;
+	}
+}

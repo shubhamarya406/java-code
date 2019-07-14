@@ -1,0 +1,11 @@
+package L16;
+
+public class generictree_client {
+
+	public static void main(String[] args) {
+		generic_tree gt=new generic_tree();
+		gt.display();
+
+	}
+
+}

@@ -1,0 +1,70 @@
+package L16;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class generic_tree {
+	Scanner scn = new Scanner(System.in);
+
+	private class node {
+		int data;
+		ArrayList<node> children = new ArrayList<>();
+	}
+
+	private node root;
+
+	public generic_tree() {
+
+		this.root = construct(null, -1);
+
+	}
+
+	private node construct(node parent, int ith) {
+		if (parent == null) {
+			System.out.println("enter the data for parent");
+
+		} else {
+			System.out.println("enter the data " + ith + "child of" + parent.data);
+		}
+		node nn = new node();
+		int item = scn.nextInt();
+		nn.data = item;
+		System.out.println("enter the no of child of");
+		int noc = scn.nextInt();
+		for (int i = 0; i < noc; i++) {
+			nn.children.add(construct(nn, i));
+
+		}
+		return nn;
+
+	}
+
+	public void display() {
+
+		display(root);
+	}
+
+	private void display(node Node) {
+		String str = Node.data + "->";
+		for (node children : Node.children) {
+			str += children.data + " ";
+		}
+		
+		System.out.println(str);
+
+		for (node children : Node.children) {
+			display(children);
+		}
+	}
+	public int  size()
+	{
+		return size(root);
+	}
+	private int size(node Node)
+	{
+		int tc=0;
+		tc+=size(Node);
+		return tc+1;
+		
+	}
+}

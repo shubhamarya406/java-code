@@ -1,0 +1,10 @@
+package Assignment_hackerblocks;
+
+public class strongest_fighter {
+
+	public static void main(String[] args) {
+		Scanner scn=new Scanner(System.in);
+
+	}
+
+}

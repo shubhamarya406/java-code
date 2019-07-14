@@ -1,0 +1,63 @@
+package Assignment_hackerblocks;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class neighbours {
+
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		int t = scn.nextInt();
+		while (t > 0) {
+			int n = scn.nextInt();
+			int arr[] = new int[n];
+			for (int i = 0; i < n; i++) {
+				arr[i] = scn.nextInt();
+			}
+			ArrayList<Integer> odd = new ArrayList<>();
+			ArrayList<Integer> even = new ArrayList<>();
+			for (int i = 0; i < arr.length; i++) {
+				if (i % 2 == 0) {
+					even.add(arr[i]);
+				} else {
+					odd.add(arr[i]);
+				}
+
+			}
+
+			int fs = 0;
+			int ss = 0;
+			int es1 = 0;
+			int es2 = 0;
+			for (int i = 0; i < odd.size(); i++) {
+				es1 = odd.get(i);
+				for (int j = i; j < odd.size(); j++) {
+					fs += odd.get(j);
+					if (es1 < fs) {
+						es1 = fs;
+					}
+
+				}
+			}
+			for (int i = 0; i < even.size(); i++) {
+				es2 = odd.get(i);
+				for (int j = i; j < even.size(); j++) {
+					ss += even.get(j);
+					if (es2 < ss) {
+						es2 = ss;
+					}
+
+				}
+			}
+         if(es1>es2)
+         {
+        	 System.out.println(es1);
+         }
+         else
+         {
+        	 System.out.println(es2);
+         }
+		}
+	}
+
+}

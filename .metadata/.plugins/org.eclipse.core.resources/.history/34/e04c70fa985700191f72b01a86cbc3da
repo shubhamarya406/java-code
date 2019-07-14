@@ -1,0 +1,83 @@
+package Assignment_hackerblocks;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+
+
+public class levelbinary {
+
+private class node
+{
+	int data;
+	node left;
+	node right;
+	
+}
+	
+	private node root;
+	
+	public void construct(ArrayList<Integer> arr)
+	{
+		this.root=construct(arr,0);
+		
+		
+	}
+
+	private node construct(ArrayList<Integer> arr, int i) {
+		if(i>arr.size()-1||arr.get(i)==-1)
+		{
+			return null;
+		}
+     node nn=new node();
+     nn.data=arr.get(i);
+     nn.left=construct(arr,2*i+1);
+     nn.right=construct(arr, 2*i+2);
+     return nn;
+     
+	}
+	public void display() {
+		display(this.root);
+	}
+
+	private void display(node Node) {
+
+		if (Node == null) {
+			return;
+		}
+
+		String str = "";
+		if (Node.left == null) {
+			str += ".";
+		} else {
+			str += Node.left.data;
+
+		}
+		str += "->" + Node.data + "->";
+		if (Node.right == null) {
+
+			str += ".";
+		} else {
+			str += Node.right.data;
+		}
+		System.out.println(str);
+
+		display(Node.left);
+		display(Node.right);
+
+	}
+	static Scanner scn=new Scanner(System.in);
+public static void main(String[] args) {
+	levelbinary bt=new levelbinary();
+	ArrayList<Integer> arr=new ArrayList<Integer>();
+	
+	while(scn.hasNextInt())
+	{
+		arr.add(scn.nextInt());
+	}
+	bt.construct(arr);
+	bt.display();
+      
+}
+}
