@@ -1,2 +1,2 @@
-# All the solution of coding blocks is here
+# All solution of the  coding blocks problem is here
 
