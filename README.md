@@ -1,2 +1,2 @@
-# All solution of the  coding blocks problem is  here
+This is the java code to print *Swastik*
 
